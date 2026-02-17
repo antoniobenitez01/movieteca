@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { publicGuard } from './auth/guards/public-guard';
-import { canActivateGuard, canMatchGuard } from './auth/guards/auth-guard';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page';
+import { canActivateGuard, canMatchGuard } from './auth/guards/auth-guard';
+import { publicGuard } from './auth/guards/public-guard';
 
 export const routes: Routes = [
   {

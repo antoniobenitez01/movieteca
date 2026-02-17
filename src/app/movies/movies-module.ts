@@ -1,17 +1,14 @@
-import { NgModule } from "@angular/core";
-import { LayoutPageComponent } from "./pages/layout-page/layout-page";
-import { MoviesRoutingModule } from "./movies-routing-module";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "../material/material-module";
 
 @NgModule({
-  declarations : [
-    LayoutPageComponent
-  ],
-  imports : [
+  declarations: [],
+  imports: [
     CommonModule,
-    MoviesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
-export class MoviesModule {}
+export class MoviesModule { }

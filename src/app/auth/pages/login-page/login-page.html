@@ -1,22 +1,103 @@
-<div class="flex flex-column">
-  <span class="text-lg mb-4">Login</span>
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header class="flex-column">
+      <img src="movieteca_black.png" alt="Movieteca Logo" style="width:100%">
+      <h1>LOGIN PAGE</h1>
+    </mat-card-header>
 
-  <mat-form-field>
-    <mat-label>Usuario</mat-label>
-    <input type="text" matInput placeholder="Usuario">
-  </mat-form-field>
+    <mat-card-content>
+      <form class="login-form" [formGroup]="loginForm" autocomplete="on">
 
-  <mat-form-field>
-    <mat-label>Contraseña</mat-label>
-    <input type="password" matInput placeholder="Contraseña">
-  </mat-form-field>
+        @if(step === 'email'){
+          <ng-container>
+            <p class="step-hint">Introduce tu correo electrónico para continuar.</p>
 
-  <button matButton="elevated" color="primary" (click)="onLogin()">
-    <mat-icon>login</mat-icon>
-    Acceder
-  </button>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Correo electrónico</mat-label>
+              <input
+                matInput
+                formControlName="username"
+                type="email"
+                name="username"
+                autocomplete="email"
+                placeholder="usuario@ejemplo.com"
+                (keyup.enter)="validateEmail()"
+              />
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error *ngIf="isEmailInvalid">
+                {{ emailError || 'Correo electrónico no válido.' }}
+              </mat-error>
+            </mat-form-field>
 
-  <div class="flex justify-content-end md-5">
-    <a routerLink="/auth/new-account">No tengo cuenta de usuario</a>
-  </div>
+            <mat-card-actions>
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                class="full-width"
+                (click)="validateEmail()"
+              >
+                Continuar
+              </button>
+            </mat-card-actions>
+          </ng-container>
+        }@else if ( step === 'checking' ) {
+          <ng-container>
+            <div class="checking-spinner">
+              <mat-spinner diameter="48"></mat-spinner>
+            </div>
+          </ng-container>
+        }@else if (step === 'password' ){
+          <ng-container>
+            <div class="email-confirmed">
+              <mat-icon>account_circle</mat-icon>
+              <span class="email-label">{{ loginForm.get('username')?.value }}</span>
+              <button
+                type="button"
+                mat-icon-button
+                matTooltip="Cambiar correo"
+                (click)="goBackToEmail()"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input
+                matInput
+                formControlName="password"
+                type="password"
+                name="password"
+                autocomplete="current-password"
+                placeholder="Contraseña"
+                (keyup.enter)="login()"
+              />
+              <mat-icon matSuffix>lock</mat-icon>
+              <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                La contraseña es obligatoria.
+              </mat-error>
+            </mat-form-field>
+
+            <p class="login-error" *ngIf="loginError">{{ loginError }}</p>
+
+            <mat-card-actions>
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                class="full-width"
+                [disabled]="showSpinner"
+                (click)="login()"
+              >
+                <span *ngIf="!showSpinner">Acceder</span>
+                <mat-spinner *ngIf="showSpinner" diameter="22" class="btn-spinner"></mat-spinner>
+              </button>
+            </mat-card-actions>
+          </ng-container>
+        }
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
+

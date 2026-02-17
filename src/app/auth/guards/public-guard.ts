@@ -1,4 +1,4 @@
-import { AuthService } from "../../services/auth-service";
+import { AuthService } from "../services/auth-service";
 import { inject } from "@angular/core";
 import { CanActivateFn, Router } from "@angular/router";
 import { map } from "rxjs";
@@ -9,7 +9,7 @@ export const publicGuard: CanActivateFn = () => {
   return authService.checkAuthentication().pipe(
     map(isAuthenticated => {
       if (isAuthenticated){
-        router.navigate(['/heroes']);
+        router.navigate(['/movies']);
         return false;
       }else{
         return true;
