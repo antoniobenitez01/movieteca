@@ -1,0 +1,19 @@
+<div class="gallery-wrapper">
+  <button class="scroll-btn left"
+          (click)="scroll('left')"
+          [class.hidden]="!canScrollLeft">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+
+  <div class="movies-gallery" #gallery (scroll)="updateScrollButtons()">
+    @for (movie of listadoMovies; track movie.id) {
+      <movie-card [movie]="movie" [isFavourite]="favouriteIds.includes(movie.id)"></movie-card>
+    }
+  </div>
+
+  <button class="scroll-btn right"
+          (click)="scroll('right')"
+          [class.hidden]="!canScrollRight">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>

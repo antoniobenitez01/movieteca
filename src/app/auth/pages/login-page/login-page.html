@@ -2,7 +2,6 @@
   <mat-card class="login-card">
     <mat-card-header class="flex-column">
       <img src="movieteca_black.png" alt="Movieteca Logo" style="width:100%">
-      <h1>LOGIN PAGE</h1>
     </mat-card-header>
 
     <mat-card-content>
@@ -24,9 +23,11 @@
                 (keyup.enter)="validateEmail()"
               />
               <mat-icon matSuffix>email</mat-icon>
-              <mat-error *ngIf="isEmailInvalid">
+              @if(isEmailInvalid){
+              <mat-error>
                 {{ emailError || 'Correo electrónico no válido.' }}
               </mat-error>
+              }
             </mat-form-field>
 
             <mat-card-actions>
@@ -74,12 +75,12 @@
                 (keyup.enter)="login()"
               />
               <mat-icon matSuffix>lock</mat-icon>
-              <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+              <mat-error>
                 La contraseña es obligatoria.
               </mat-error>
+              }
             </mat-form-field>
-
-            <p class="login-error" *ngIf="loginError">{{ loginError }}</p>
 
             <mat-card-actions>
               <button
@@ -90,8 +91,11 @@
                 [disabled]="showSpinner"
                 (click)="login()"
               >
-                <span *ngIf="!showSpinner">Acceder</span>
-                <mat-spinner *ngIf="showSpinner" diameter="22" class="btn-spinner"></mat-spinner>
+                @if(!showSpinner){
+                  <span>Acceder</span>
+                }@else {
+                  <mat-spinner diameter="22" class="btn-spinner"></mat-spinner>
+                }
               </button>
             </mat-card-actions>
           </ng-container>

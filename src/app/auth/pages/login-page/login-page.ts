@@ -20,7 +20,6 @@ export class LoginPageComponent {
   step: 'email' | 'checking' | 'password' = 'email';
 
   emailError: string = '';
-  loginError: string = '';
 
   constructor(
     private authService : AuthService,
@@ -40,19 +39,21 @@ export class LoginPageComponent {
     }
 
     this.showSpinner = true;
-    this.loginError = '';
+    this.step = 'checking';
 
-    this.authService.login(this.loginForm.value).subscribe({
-      next: () => {
-        this.showSpinner = false;
-        this.router.navigate(['/']);
-      },
-      error: () => {
-        this.showSpinner = false;
-        this.loginError = 'Credenciales incorrectas. Inténtalo de nuevo.';
-        this.snackbar.open('Error al iniciar sesión', 'Cerrar', { duration: 3000 });
-      }
-    });
+    setTimeout(() => {
+      this.authService.login(this.loginForm.value).subscribe({
+        next: () => {
+          this.showSpinner = false;
+          this.router.navigate(['/']);
+        },
+        error: () => {
+          this.showSpinner = false;
+          this.goBackToEmail();
+          this.snackbar.open('Credenciales inválidas, inténtelo de nuevo.', 'Cerrar', { duration: 3000 });
+        }
+      });
+    }, 2000);
   }
 
   validateEmail(): void {
@@ -69,12 +70,11 @@ export class LoginPageComponent {
 
     setTimeout(() => {
       this.step = 'password';
-    }, 800);
+    }, 1000);
   }
 
   goBackToEmail(): void {
     this.step = 'email';
-    this.loginError = '';
     this.loginForm.get('password')?.reset();
   }
 

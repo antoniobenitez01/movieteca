@@ -1,12 +1,27 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MaterialModule } from "../material/material-module";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { MoviesRoutingModule } from './movies-routing-module';
+import { LayoutPageComponent } from './pages/layout-page/layout-page';
+import { ListPageComponent } from './pages/list-page/list-page';
+import { SearchPageComponent } from './pages/search-page/search-page';
+import { MaterialModule } from '../material/material-module';
+import { CardComponent } from './components/card/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MoviePageComponent } from './pages/movie-page/movie-page';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MoviePageComponent,
+    LayoutPageComponent,
+    ListPageComponent,
+    SearchPageComponent,
+    CardComponent,
+  ],
   imports: [
     CommonModule,
+    MoviesRoutingModule,
     MaterialModule,
     ReactiveFormsModule
   ]

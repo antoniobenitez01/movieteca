@@ -1,0 +1,55 @@
+<mat-card class="movie-card" appearance="outlined">
+  <div class="poster-container">
+    <img [src]="moviesService.getPosterUrl(movie.poster_path)" [alt]="movie.title" class="movie-poster">
+    <div class="poster-overlay">
+      <div class="rating-badge" [ngClass]="{'high-rating': movie.vote_average >= 7, 'medium-rating': movie.vote_average >= 5 && movie.vote_average < 7, 'low-rating': movie.vote_average < 5}">
+        <mat-icon>star</mat-icon>
+        <span>{{ movie.vote_average | number:'1.1-1' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <mat-card-header>
+    <mat-card-title>{{ movie.title }}</mat-card-title>
+    <mat-card-subtitle>
+
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="overview-container">
+      <p class="overview" [class.expanded]="isExpanded">
+        {{ movie.overview }}
+      </p>
+      @if (movie.overview && movie.overview.length > 150) {
+        <button mat-button class="read-more-btn" (click)="toggleExpand()">
+          {{ isExpanded ? 'Leer menos' : 'Leer más' }}
+        </button>
+      }
+    </div>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions>
+    <div class="subtitle-content">
+        <span class="popularity">
+          <mat-icon>trending_up</mat-icon>
+          {{ movie.popularity | number:'1.0-0' }}
+        </span>
+        <span class="votes">
+          <mat-icon>thumb_up</mat-icon>
+          {{ movie.vote_count | number }}
+        </span>
+    </div>
+    <span class="spacer"></span>
+    <button mat-raised-button (click)="toggleFavourite()">
+      <mat-icon>{{ isFavourite ? 'bookmark' : 'bookmark_border' }}</mat-icon>
+      Favourite
+    </button>
+    <button mat-raised-button color="primary" [routerLink]="['/movies', movie.id]">
+      <mat-icon>info</mat-icon>
+      Ver detalles
+    </button>
+  </mat-card-actions>
+</mat-card>
