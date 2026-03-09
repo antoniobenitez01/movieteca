@@ -6,7 +6,7 @@ import { User } from '../../../shared/interfaces/user';
 @Component({
   selector: 'app-layout-page',
   templateUrl: './layout-page.html',
-  styles: ``,
+  styleUrl: 'layout-page.css',
   standalone : false
 })
 export class LayoutPageComponent {

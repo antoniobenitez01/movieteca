@@ -27,6 +27,20 @@ export class MoviesService
       );
   }
 
+  searchMovies( query : string ): Observable<Movie[]> {
+    const params = new HttpParams()
+      .set('api_key', this.TMDB_API_KEY)
+      .set('query', query)
+      .set('include_adult', 'false')
+      .set('language', 'en-US')
+      .set('page', '1');
+
+    return this.http.get<TmdbResponse>(`${this.baseUrl}/3/search/movie`, { params })
+      .pipe(
+        map(response => response.results.slice(0, 20))
+      );
+  }
+
   getPosterUrl(posterPath: string, size: 'w200' | 'w300' | 'w500' | 'w780' | 'original' = 'w500'): string {
     return `${this.imagesUrl}/${size}${posterPath}`;
   }

@@ -1,0 +1,32 @@
+.search-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.search-field {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+  gap: 16px;
+  opacity: 0.6;
+}
+
+.state-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}

@@ -9,6 +9,7 @@ import { MaterialModule } from '../material/material-module';
 import { CardComponent } from './components/card/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoviePageComponent } from './pages/movie-page/movie-page';
+import { FavouritesPageComponent } from './pages/favorites-page/favourites-page';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MoviePageComponent } from './pages/movie-page/movie-page';
     ListPageComponent,
     SearchPageComponent,
     CardComponent,
+    FavouritesPageComponent
   ],
   imports: [
     CommonModule,

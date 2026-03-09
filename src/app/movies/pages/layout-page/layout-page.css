@@ -1,0 +1,16 @@
+.user-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 20px;
+  padding: 0 10px;
+  transition: background 0.2s;
+}
+
+.user-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.mat-sidenav-content {
+  overflow-x: hidden;
+}

@@ -1,1 +1,40 @@
-<h1>BUSCADOR</h1>
+<div class="search-container">
+
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search movies...</mat-label>
+    <input
+      matInput
+      [(ngModel)]="query"
+      (keyup.enter)="onSearch()"
+      (input)="onSearch()"
+      placeholder="e.g. Inception, Pokemon..."
+    />
+    <mat-icon matPrefix>search</mat-icon>
+    @if(query){
+      <button matSuffix mat-icon-button (click)="query = ''; results = []">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+
+  @if(loading){
+    <div class="state-container">
+      <mat-spinner diameter="48"></mat-spinner>
+    </div>
+  }
+
+  @if(!loading && query && results.length === 0){
+    <div  class="state-container">
+      <mat-icon class="state-icon">movie_filter</mat-icon>
+      <p class="mat-body-1">No results found for <strong>{{ query }}</strong></p>
+    </div>
+  }
+
+  @if(!loading && results.length > 0) {
+    <div class="results-grid">
+      @for (movie of results; track movie.id) {
+        <movie-card [movie]="movie"></movie-card>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,7 @@
+<div class="gallery-wrapper">
+  <div class="movies-gallery" #gallery>
+    @for (movie of listadoMovies; track movie.id) {
+      <movie-card [movie]="movie" [isFavourite]="true"></movie-card>
+    }
+  </div>
+</div>
