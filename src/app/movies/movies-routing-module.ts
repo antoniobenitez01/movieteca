@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutPageComponent } from './pages/layout-page/layout-page';
 import { SearchPageComponent } from './pages/search-page/search-page';
-import { ListPageComponent } from './pages/list-page/list-page';
+import { MainPageComponent } from './pages/main-page/main-page';
 import { MoviePageComponent } from './pages/movie-page/movie-page';
 import { FavouritesPageComponent } from './pages/favorites-page/favourites-page';
 
@@ -13,10 +13,10 @@ const routes: Routes = [
     component: LayoutPageComponent,
     children: [
       {path: 'search', component: SearchPageComponent},
-      {path: 'list', component: ListPageComponent},
+      {path: 'main', component: MainPageComponent},
       {path: 'favourites', component: FavouritesPageComponent},
       {path: ':id', component: MoviePageComponent},
-      {path: '**', redirectTo: "list"}
+      {path: '**', redirectTo: "main"}
     ]
   }
 ];

@@ -1,7 +1,7 @@
 .movie-card {
   max-width: 380px;
   width: 100%;
-  margin: 16px;
+  margin: 0;
   transition: transform 0.2s, box-shadow 0.2s;
   border-radius: 16px !important;
   overflow: hidden;

@@ -1,26 +1,26 @@
 <mat-sidenav-container fullscreen>
 
-  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '300px','background-color': 'var(--mat-sys-primary)' }">
 
-    <mat-toolbar class="toolbar-warn">
-      <span>Movieteca</span>
+    <mat-toolbar class="toolbar-primary">
+      <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;">MOVIETECA</span>
     </mat-toolbar>
 
-    <mat-nav-list>
+    <mat-nav-list class="p-3">
       @for(item of sidebarItems; track $index){
-        <mat-list-item [routerLink]=item.url (click)="sidenav.toggle()">
-          <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
-          {{item.label}}
+        <mat-list-item [routerLink]=item.url (click)="sidenav.toggle()" class="mt-2">
+          <mat-icon matListItemIcon style="color:white">{{item.icon}}</mat-icon>
+          <span matListItemTitle style="color:white">{{item.label}}</span>
         </mat-list-item>
       }
     </mat-nav-list>
 
   </mat-sidenav>
 
-  <mat-toolbar class="toolbar-primary">
+  <mat-toolbar class="toolbar-warn">
 
     <button mat-icon-button (click)="sidenav.toggle()">
-      <img src="movieteca_white.png">
+      <mat-icon style="color:white">menu</mat-icon>
     </button>
 
     <span class="spacer"></span>
@@ -40,13 +40,7 @@
 
   </mat-toolbar>
 
-  <div class="p-2 min-vh-100 w-100" style="background-image: url('bg.jpg');
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-attachment: fixed;">
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
 
 </mat-sidenav-container>
 

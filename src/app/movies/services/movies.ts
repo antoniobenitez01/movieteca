@@ -23,7 +23,7 @@ export class MoviesService
 
     return this.http.get<TmdbResponse>(`${this.baseUrl}/3/movie/popular`, { params })
       .pipe(
-        map(response => response.results.slice(0, 8))
+        map(response => response.results.slice(0, 15))
       );
   }
 

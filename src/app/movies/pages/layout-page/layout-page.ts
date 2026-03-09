@@ -14,8 +14,8 @@ export class LayoutPageComponent {
   user : User | undefined = this.loadUser();
 
   public sidebarItems = [
+    { label: "Home", icon: "home", url: "./main"},
     { label: "Buscar", icon: "search", url: "./search"},
-    { label: "Listado", icon: "list", url: "./list"},
     { label: "Favoritos", icon: "star", url: "./favourites"},
   ];
 

@@ -1,0 +1,21 @@
+<div class="container">
+  <div style="background-image:url('bg.jpg'); background-size:cover;" class="herodiv">
+    <img src="movieteca_white.png" style="width:25%">
+    <div class="textdiv">
+      <h1>WELCOME TO MOVIETECA</h1>
+      <p> This is a very long description isnt this a very
+          a very long drescription my god its still going no way
+          look at this very long description that you are still reading
+          are you curious to find anything here because I cant say
+          anything bad or else I'll get called out by my teachers</p>
+    </div>
+  </div>
+
+  <div class="movies-grid mb-8 p-5">
+    @for (movie of listadoMovies; track movie.id){
+      <div class="movie-item">
+        <movie-card [movie]="movie"></movie-card>
+      </div>
+    }
+  </div>
+</div>

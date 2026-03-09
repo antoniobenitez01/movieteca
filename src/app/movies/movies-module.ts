@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MoviesRoutingModule } from './movies-routing-module';
 import { LayoutPageComponent } from './pages/layout-page/layout-page';
-import { ListPageComponent } from './pages/list-page/list-page';
+import { MainPageComponent } from './pages/main-page/main-page';
 import { SearchPageComponent } from './pages/search-page/search-page';
 import { MaterialModule } from '../material/material-module';
 import { CardComponent } from './components/card/card';
@@ -16,7 +16,7 @@ import { FavouritesPageComponent } from './pages/favorites-page/favourites-page'
   declarations: [
     MoviePageComponent,
     LayoutPageComponent,
-    ListPageComponent,
+    MainPageComponent,
     SearchPageComponent,
     CardComponent,
     FavouritesPageComponent

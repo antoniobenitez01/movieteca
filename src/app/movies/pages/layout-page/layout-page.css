@@ -14,3 +14,11 @@
 .mat-sidenav-content {
   overflow-x: hidden;
 }
+
+mat-sidenav-container {
+  background-color: black;
+}
+
+.mat-drawer-content {
+  margin-left: 0 !important;
+}

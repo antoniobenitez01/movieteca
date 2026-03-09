@@ -1,0 +1,60 @@
+.herodiv{
+  width: 100%;
+  box-sizing: border-box;
+  height:50vh;
+  padding:50px;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.textdiv{
+  height:30vh;
+  width:80vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  color:white
+}
+
+.textdiv > h1 {
+  width:80%;
+  font-size: 70px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  flex-wrap: wrap;
+  line-height: 1;
+  margin-bottom:1vh;
+}
+
+.textdiv > p {
+  width:80%;
+  font-size:15px;
+  margin-top:0
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.movies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 0;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.movie-item {
+  width: calc(20% - 16px);
+  box-sizing: border-box;
+}
